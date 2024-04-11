@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Interests Survey Form</title>
+</head>
+<body>
+    <div align="center">
+        <form action="mailto:arthur.coelho1984@gmail.com" method="post" enctype="text/plain">
+            <h1>Employee Interests Survey Form</h1>
+            <label for="name">Enter your name:</label>
+            <input type="text" name="yourName" id="name" size="35" maxlength="35"><br>
+            <label for="department">Enter your department:</label>
+            <input type="text" name="yourDepartment" id="department" size="35" maxlength="35"><br>
+            <label for="yourself">Tell us a little about yourself:</label>
+            <textarea name="yourDescription" id="" cols="30" rows="10"></textarea><br>
+            <p>Do you exercise at home?</p>
+            <input type="radio" name="exercise" id="yes" value="yes"> <!-- pro input:"radio" funcionar, todos devem ter o mesmo name="" -->
+            <label for="yes">Yes</label>
+            <input type="radio" name="exercise" id="no" value="no">
+            <label for="no">No</label>
+            <p>How do you like to read about your favorite topics?</p>
+            <input type="checkbox" name="books" id="books" value="Books">
+            <label for="books">Books</label>
+            <input type="checkbox" name="onlineResources" id="onlineResources">
+            <label for="onlineResources">Online Resources</label>
+            <input type="checkbox" name="phoneApps" id="phoneApps">
+            <label for="phoneApps">Phone Apps </label>
+            <input type="checkbox" name="magazines" id="magazines">
+            <label for="magazines">Magazines</label> <br>
+            <label for="movies">What genre of movies do you like?</label>
+            <select name="movies" id="movies">
+                <option value="horror">Horror</option>
+                <option value="drama">Drama</option>
+                <option value="comedy">Comedy</option>
+                <option value="documentary">Documentary</option>
+            </select><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
