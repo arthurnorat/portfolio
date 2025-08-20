@@ -301,35 +301,125 @@ button {
 }
 */
 
-/* CONTENT SECTION */
+/* MARKDOWN CONTENT SECTION */
 
-#content {
+#markdown-content {
     position: relative;
     text-align: center;
-    padding-top: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
 }
 
-.content-container {
+.markdown-container {
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 900px;
 }
 
-.content-text {
+.markdown-text {
     text-align: left;
-    line-height: 1.6;
+    line-height: 1.7;
+    width: 100%;
 }
 
-.content-text h2 {
-    font-size: 2rem;
+.markdown-text h1 {
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
+    color: #333;
+    border-bottom: 2px solid #555;
+    padding-bottom: 0.5rem;
+}
+
+.markdown-text h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     color: #333;
 }
 
-.content-text p {
-    margin-bottom: 1.5rem;
+.markdown-text h3 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #444;
+}
+
+.markdown-text p {
+    margin-bottom: 1.2rem;
     font-size: 1.1rem;
+}
+
+.markdown-text ul, .markdown-text ol {
+    margin-bottom: 1.2rem;
+    padding-left: 2rem;
+}
+
+.markdown-text li {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.markdown-text code {
+    background-color: #f4f4f4;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.markdown-text pre {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.markdown-text pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.markdown-text blockquote {
+    border-left: 4px solid #555;
+    padding-left: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+    color: #666;
+}
+
+.markdown-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.markdown-text a:hover {
+    text-decoration: underline;
+}
+
+.markdown-text img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+.markdown-text table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.markdown-text th, .markdown-text td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.markdown-text th {
+    background-color: #f4f4f4;
+    font-weight: bold;
 }
 
 /* FOOTER */

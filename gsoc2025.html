@@ -13,55 +13,88 @@
 </head>
 <body>
 
-<!--DESKTOP-NAV-->
+<!-- MARKDOWN CONTENT SECTION -->
     
-    <nav id="desktop-nav">
-        <div class="logo">Arthur Norat</div>
-        <div>
-            <ul class="nav-links">
-                <li><a href="index.html">About me</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#experience">Experience</a></li>                
-            </ul>
-        </div>        
-    </nav>
-
-<!-- HERO SECTION -->
-    
-    <section id="hero">
-        <div class="hero-text">
-            <p class="p1">Google Summer of Code 2025</p>
-            <h1 class="title">VideoLAN</h1>
-            <p class="p2">VLC iOS App Development</p>
-            <div class="btn-container">
-                <a href="index.html">
-                    <button class="btn-1">← Voltar</button>
-                </a>
-                <a href="https://code.videolan.org/videolan/vlc-ios/-/merge_requests/1457" target="_blank" rel="noopener noreferrer">
-                    <button class="btn-2">View Code</button>
-                </a>
-            </div>
-        </div>
-        <div class="pic-container">
-            <img src="./assets/vlc.png" alt="VideoLAN Logo">
-        </div>
-    </section>
-
-<!-- CONTENT SECTION -->
-    
-    <section id="content">
-        <div class="content-container">
-            <div class="content-text">
-                <h2>About the Project</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <section id="markdown-content">
+        <div class="markdown-container">
+            <div class="markdown-text">
+                <h1>Final Evaluation – Parental Control Feature for VLC-iOS</h1>
                 
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                <p>When I first started this project, the goal was clear: implement a <strong>Parental Control</strong> system in VLC for iOS that could protect sensitive features—such as deleting media files, accessing settings, and opening network streams—by requiring authentication through a passcode or Face ID. The goal was to provide a safer experience for families, particularly parents who share their devices with young children.</p>
                 
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                <p>But from the very beginning, I realized this task would not be simple. In fact, it turned out to be <strong>the most challenging technical experience I've ever had</strong>—far more complex than anything I've faced in college, personal projects, or freelance work. And not just because of the code. This was also my <strong>first collaborative open source project</strong>, which meant learning how to navigate a shared codebase, respect other contributors' changes, and maintain a clean and reviewable Git history—something I had never done before.</p>
                 
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                <h2>First Steps & Git Challenges</h2>
                 
-                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+                <p>In early June, I began by designing the structure of a new class, <code>ParentalControlCoordinator</code>, which would handle all aspects of authentication. However, I quickly ran into trouble while working with Git. After running a <code>git rebase master</code>, I accidentally introduced dozens of unrelated commits into my merge request (!1457). It took me over a week to understand how to clean the commit history properly using <code>git reset</code> and <code>git push --force</code>, but eventually I was able to recover the branch and make it ready for development again.</p>
+                
+                <h2>First Version – Basic Authentication Logic</h2>
+                
+                <p>Once the Git issues were resolved, I started experimenting with the actual logic of the feature. The first method I created was:</p>
+                
+                <pre><code>func authenticate(completion: @escaping (Bool) -> Void)</code></pre>
+                
+                <p>It verified whether parental control was enabled and, if so, called:</p>
+                
+                <pre><code>keychain.validateSecret(allowBiometricAuthentication: true, isCancellable: true)</code></pre>
+                
+                <p>This worked in some scenarios but revealed a big architectural flaw: <strong>the parental control feature was tied to the Passcode Lock</strong>. If Passcode Lock was disabled, parental control would not function at all.</p>
+                
+                <h2>Independence Between Features</h2>
+                
+                <p>To solve this, I created a <strong>separate keychain entry</strong> dedicated to parental control. I then refactored <code>ParentalControlCoordinator</code> to remove all dependencies on <code>UserDefaults</code> and reused the <code>KeychainCoordinator</code> only for logic related to displaying the passcode screen. This allowed parental control and passcode lock to <strong>function completely independently</strong>, just as they should.</p>
+                
+                <h2>Protecting Actions – Method by Method</h2>
+                
+                <p>With the authentication logic working, I moved on to protecting individual features. To avoid duplicating code, I created a centralized method:</p>
+                
+                <pre><code>func authorizeIfParentalControlIsEnabled(with action: @escaping () -> Void)</code></pre>
+                
+                <p>This method was then called before each restricted action. Here's how it was integrated across the app:</p>
+                
+                <ul>
+                    <li><strong>Renaming a file</strong>: Inside <code>EditActions.rename(...)</code></li>
+                    <li><strong>Deleting a file</strong>: In <code>EditActions.delete(...)</code></li>
+                    <li><strong>Opening the settings screen</strong>: Via <code>TabBarCoordinator</code> using <code>tabBarController(_:shouldSelect:)</code> and <code>handleAppDidBecomeActive()</code></li>
+                    <li><strong>Opening a network stream</strong>: In <code>_openURLStringAndDismiss()</code></li>
+                    <li><strong>Downloading files</strong>: Also in <code>_openURLStringAndDismiss()</code></li>
+                    <li><strong>Accessing local files</strong>: In <code>RemoteNetworkDataSource</code>, via <code>tableView(_:didSelectRowAt:)</code></li>
+                    <li><strong>Adding/removing files from playlists/media groups</strong>: In <code>EditActions</code>, wrapping the logic with <code>authorizeIfParentalControlIsEnabled</code></li>
+                </ul>
+                
+                <h2>Session Logic and Timeout</h2>
+                
+                <p>To avoid overwhelming the user with constant passcode prompts, I implemented a <strong>temporary unlock session</strong>. After successful authentication, a timestamp was stored using:</p>
+                
+                <pre><code>private var lastAuthenticationDate: Date?</code></pre>
+                
+                <p>I then checked the elapsed time using:</p>
+                
+                <pre><code>var isParentalControlUnlocked: Bool</code></pre>
+                
+                <p>This allowed users to perform multiple protected actions within a short time window (30 seconds, for testing) without re-authenticating.</p>
+                
+                <h2>Biometric Authentication – The Final Hurdle</h2>
+                
+                <p>The last and most frustrating challenge was <strong>Face ID integration</strong>. If the user opened the app using Face ID (via Passcode Lock), then tried to authenticate again for parental control, the Face ID screen would appear again—but never dismiss.</p>
+                
+                <p>Even though the authentication was <strong>technically successful</strong>, the biometric prompt would remain visible. I tried everything from refactoring to creating <code>showPasscodeController()</code> inside <code>ParentalControlCoordinator</code>, and checking <code>LAContext</code>, but the problem persisted.</p>
+                
+                <h2>Current Status and What's Left</h2>
+                
+                <p>The feature is currently in an advanced and testable state. It successfully protects all major actions and provides a good user experience thanks to the unlock session logic.</p>
+                
+                <p>However, <strong>the merge request has not yet been merged upstream</strong> because of the <strong>unresolved conflict with Face ID</strong>, which seems to require deeper investigation and collaboration.</p>
+                
+                <h2>Reflections</h2>
+                
+                <p>This project has been <strong>an unforgettable journey</strong>. I had the freedom to design the logic and structure the architecture. That creative autonomy is one of the most rewarding aspects of working in open source.</p>
+                
+                <p>At the same time, it pushed me to my limits. I had to learn Git the hard way, dive into a large codebase, and fix bugs I didn't even know how to describe at first.</p>
+                
+                <p>Although it's not merged yet, I truly believe this is the <strong>first solid draft</strong> of a meaningful feature. One that can be refined and eventually added to VLC for iOS to improve the experience for families around the world.</p>
+                
+                <p>And that's a goal worth working for.</p>
             </div>
         </div>
     </section>
