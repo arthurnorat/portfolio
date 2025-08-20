@@ -180,13 +180,13 @@ button {
     justify-content: center;
 }
 
-.project-cell {
+.project-item {
     display: flex;
     justify-content: center;
     margin: 2rem;
 }
 
-.project-cell .pic-container img {
+.project-item .pic-container img {
     margin-right: 2rem;
     border: white 0.01rem solid;
     border-radius: 0.5rem;
