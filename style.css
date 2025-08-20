@@ -165,7 +165,6 @@ button {
     gap: 1rem;
 }
 
-
 /* PROJECTS SECTION*/
 
 #projects {
@@ -301,6 +300,37 @@ button {
     border-radius: 5px;
 }
 */
+
+/* CONTENT SECTION */
+
+#content {
+    position: relative;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.content-text {
+    text-align: left;
+    line-height: 1.6;
+}
+
+.content-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.content-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
 
 /* FOOTER */
 
