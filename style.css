@@ -173,7 +173,6 @@ button {
     text-align: center;
 }
 
-
 .projects-container {
     display: flex;
     flex-direction: column;
@@ -235,38 +234,44 @@ button {
     font-size: 1.75rem;
 }
 
+/* EXPERIENCE SECTION */
 
-/* FOOTER */
-
-.footer {
-    padding: 20px 0;
+#experience {
+    position: relative;
     text-align: center;
 }
 
-
-
-/* Skills
-
-.skills {
-    background-color: #e9ecef;
-    padding: 50px 0;
+.experience-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.skills .skill-list {
+.experience-item {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    margin: 2rem;
 }
 
-.skills .skill {
-    background-color: #007bff;
-    color: #fff;
-    margin: 10px;
-    padding: 10px 20px;
-    border-radius: 5px;
+.experience-item .pic-container img {
+    margin-right: 2rem;
+    border: white 0.01rem solid;
+    border-radius: 0.5rem;
 }
 
-*/
+.experience-text {
+    text-align: left;
+    margin: 2rem;
+}
+
+.experience-text h3 {
+    font-size: 1.5rem;
+}
+
+.experience-text p {
+    margin-bottom: 1rem;
+}
+
 
 /* Contact
 
@@ -295,5 +300,11 @@ button {
     border: none;
     border-radius: 5px;
 }
-
 */
+
+/* FOOTER */
+
+.footer {
+    padding: 20px 0;
+    text-align: center;
+}
