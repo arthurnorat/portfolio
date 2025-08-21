@@ -13,11 +13,81 @@
 </head>
 <body>
 
-<!-- MARKDOWN CONTENT SECTION -->
+<!-- NAVIGATION -->
+<nav id="desktop-nav">
+    <div class="logo">Arthur Norat</div>
+    <div>
+        <ul class="nav-links">
+            <li><a href="index.html">Portfolio</a></li>
+            <li class="lang-switcher">
+                <a href="./pt-br/gsoc2025.html" class="lang-btn" aria-label="Português (Brasil)" title="Português (Brasil)">🇧🇷</a>
+                <a href="./gsoc2025.html" class="lang-btn active" aria-label="English (US)" title="English (US)">🇺🇸</a>
+                <a href="./es/gsoc2025.html" class="lang-btn" aria-label="Español (MX)" title="Español (MX)">🇲🇽</a>
+            </li>                
+        </ul>
+    </div>        
+</nav>
+
+<!-- PROJECT HEADER -->
     
-    <section id="markdown-content">
-        <div class="markdown-container">
-            <div class="markdown-text">
+    <section id="project-header">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="header-text">
+                    <p class="project-category">Google Summer of Code 2025</p>
+                    <h1 class="project-title">Parental Control Feature</h1>
+                    <p class="project-subtitle">VLC iOS App Development</p>
+                    <div class="project-meta">
+                        <span class="meta-item">
+                            <i class='bx bx-calendar'></i>
+                            June - August 2025
+                        </span>
+                        <span class="meta-item">
+                            <i class='bx bx-code-alt'></i>
+                            Swift, iOS, VLC
+                        </span>
+                        <span class="meta-item">
+                            <i class='bx bx-git-branch'></i>
+                            Open Source
+                        </span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <a href="index.html" class="btn-back">
+                        <i class='bx bx-arrow-back'></i>
+                        Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- PROJECT LINKS -->
+    
+    <section id="project-links">
+        <div class="links-container">
+            <div class="links-content">
+                <a href="https://code.videolan.org/videolan/vlc-ios/-/merge_requests/1457" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <i class='bx bx-git-branch'></i>
+                    View on GitLab
+                </a>
+                <a href="https://summerofcode.withgoogle.com/projects/#4969006760486912" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <i class='bx bx-link-external'></i>
+                    GSoC Project Page
+                </a>
+                <a href="https://www.videolan.org/" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <i class='bx bx-world'></i>
+                    VideoLAN Website
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- ARTICLE CONTENT -->
+    
+    <section id="article-content">
+        <div class="article-container">
+            <div class="article-body">
                 <h1>Final Evaluation – Parental Control Feature for VLC-iOS</h1>
                 
                 <p>When I first started this project, the goal was clear: implement a <strong>Parental Control</strong> system in VLC for iOS that could protect sensitive features—such as deleting media files, accessing settings, and opening network streams—by requiring authentication through a passcode or Face ID. The goal was to provide a safer experience for families, particularly parents who share their devices with young children.</p>
