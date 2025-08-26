@@ -52,12 +52,6 @@
                         </span>
                     </div>
                 </div>
-                <div class="header-actions">
-                    <a href="index.html" class="btn-back">
-                        <i class='bx bx-arrow-back'></i>
-                        Volver al Portafolio
-                    </a>
-                </div>
             </div>
         </div>
     </section>
@@ -82,9 +76,79 @@
             <div class="article-body">
                 <h1>Evaluación Final – Función de Control Parental para VLC-iOS</h1>
                 
-                <p>Cuando comencé este proyecto, el objetivo era claro: implementar un sistema de <strong>Control Parental</strong> en VLC para iOS que pudiera proteger funciones sensibles—como eliminar archivos multimedia, acceder a configuraciones y abrir transmisiones de red—requiriendo autenticación a través de un código de acceso o Face ID. El objetivo era proporcionar una experiencia más segura para las familias, particularmente para padres que comparten sus dispositivos con niños pequeños.</p>
+                <p>Cuando comencé este proyecto, el objetivo era claro: implementar un sistema de <strong>Control Parental</strong> en VLC para iOS que pudiera proteger funciones sensibles, como eliminar archivos multimedia, acceder a configuraciones y abrir transmisiones de red, requiriendo autenticación a través de un código de acceso o Face ID. El objetivo era proporcionar una experiencia más segura para las familias, particularmente para padres que comparten sus dispositivos con niños pequeños.</p>
                 
-                <p>Pero desde el principio, me di cuenta de que esta tarea no sería simple. De hecho, resultó ser <strong>la experiencia técnica más desafiante que he tenido</strong>—mucho más compleja que cualquier cosa que haya enfrentado en la universidad, proyectos personales o trabajo freelance. Y no solo por el código. Este también fue mi <strong>primer proyecto colaborativo de código abierto</strong>, lo que significaba aprender a navegar por una base de código compartida, respetar los cambios de otros contribuyentes y mantener un historial de Git limpio y revisable—algo que nunca había hecho antes.</p>
+                <p>Pero desde el principio, me di cuenta de que esta tarea no sería simple. De hecho, resultó ser <strong>la experiencia técnica más desafiante que he tenido</strong>, mucho más compleja que cualquier cosa que haya enfrentado en la universidad, proyectos personales o trabajo freelance. Y no solo por el código. Este también fue mi <strong>primer proyecto colaborativo de código abierto</strong>, lo que significaba aprender a navegar por una base de código compartida, respetar los cambios de otros contribuyentes y mantener un historial de Git limpio y revisable, algo que nunca había hecho antes.</p>
+                
+                <h2>Primeros Pasos y Desafíos de Git</h2>
+                
+                <p>A principios de junio, comencé diseñando la estructura de una nueva clase, <code>ParentalControlCoordinator</code>, que manejaría todos los aspectos de la autenticación. Sin embargo, rápidamente tuve problemas al trabajar con Git. Después de ejecutar un <code>git rebase master</code>, accidentalmente introduje docenas de commits no relacionados en mi merge request. Me tomó más de una semana entender cómo limpiar el historial de commits correctamente usando <code>git reset</code> y <code>git push --force</code>, pero eventualmente pude recuperar la rama y dejarla lista para desarrollo nuevamente.</p>
+                
+                <h2>Primera Versión – Lógica Básica de Autenticación</h2>
+                
+                <p>Una vez que los problemas de Git fueron resueltos, comencé a experimentar con la lógica real de la funcionalidad. El primer método que creé fue:</p>
+                
+                <pre><code>func authenticate(completion: @escaping (Bool) -> Void)</code></pre>
+                
+                <p>Verificaba si el control parental estaba habilitado y, si es así, llamaba:</p>
+                
+                <pre><code>keychain.validateSecret(allowBiometricAuthentication: true, isCancellable: true)</code></pre>
+                
+                <p>Esto funcionaba en algunos escenarios pero reveló una gran falla arquitectónica: <strong>la funcionalidad de control parental estaba vinculada al Passcode Lock</strong>, una funcionalidad que solicita al usuario que ingrese un código de acceso al abrir la aplicación. Si el Passcode Lock estuviera deshabilitado, el control parental no funcionaría en absoluto.</p>
+                
+                <h2>Independencia Entre Funcionalidades</h2>
+                
+                <p>Para resolver esto, creé una <strong>entrada separada en el keychain</strong> dedicada al control parental. Luego refactoricé el <code>ParentalControlCoordinator</code> para eliminar todas las dependencias de <code>UserDefaults</code> y reutilicé el <code>KeychainCoordinator</code> solo para lógica relacionada con mostrar la pantalla de código de acceso. Esto permitió que el control parental y el bloqueo por código funcionaran <strong>completamente independientes</strong>, como deberían.</p>
+                
+                <h2>Protegiendo Acciones – Método por Método</h2>
+                
+                <p>Con la lógica de autenticación funcionando, pasé a proteger funcionalidades individuales. Para evitar duplicación de código, creé un método centralizado:</p>
+                
+                <pre><code>func authorizeIfParentalControlIsEnabled(with action: @escaping () -> Void)</code></pre>
+                
+                <p>Este método era entonces llamado antes de cada acción restringida. Aquí está cómo fue integrado en toda la aplicación:</p>
+                
+                <ul>
+                    <li><strong>Renombrar un archivo</strong>: Dentro de <code>EditActions.rename(...)</code></li>
+                    <li><strong>Eliminar un archivo</strong>: En <code>EditActions.delete(...)</code></li>
+                    <li><strong>Abrir la pantalla de configuraciones</strong>: Via <code>TabBarCoordinator</code> usando <code>tabBarController(_:shouldSelect:)</code> y <code>handleAppDidBecomeActive()</code></li>
+                    <li><strong>Abrir una transmisión de red</strong>: En <code>_openURLStringAndDismiss()</code></li>
+                    <li><strong>Descargar archivos</strong>: También en <code>_openURLStringAndDismiss()</code></li>
+                    <li><strong>Acceder a archivos locales</strong>: En <code>RemoteNetworkDataSource</code>, via <code>tableView(_:didSelectRowAt:)</code></li>
+                    <li><strong>Agregar/eliminar archivos de playlists/grupos de medios</strong>: En <code>EditActions</code>, envolviendo la lógica con <code>authorizeIfParentalControlIsEnabled</code></li>
+                </ul>
+                
+                <h2>Lógica de Sesión y Timeout</h2>
+                
+                <p>Para evitar abrumar al usuario con solicitudes constantes de código de acceso, implementé una <strong>sesión de desbloqueo temporal</strong>. Después de una autenticación exitosa, un timestamp era almacenado usando:</p>
+                
+                <pre><code>private var lastAuthenticationDate: Date?</code></pre>
+                
+                <p>Luego verifiqué el tiempo transcurrido usando:</p>
+                
+                <pre><code>var isParentalControlUnlocked: Bool</code></pre>
+                
+                <p>Esto permitía a los usuarios realizar múltiples acciones protegidas dentro de una ventana de 30 segundos sin re-autenticar.</p>
+                
+                <h2>Autenticación Biométrica – El Último Obstáculo</h2>
+                
+                <p>El último y más frustrante desafío fue la <strong>integración del Face ID</strong>. Si el usuario abría la aplicación usando Face ID (via Passcode Lock), luego intentaba autenticar nuevamente para control parental, la pantalla del Face ID aparecería repetidamente y nunca se descartaría.</p>
+                
+                <p>Aunque la autenticación fuera <strong>técnicamente exitosa</strong>, el prompt biométrico permanecería visible. Intenté de todo, desde refactorizar los métodos existentes hasta crear un nuevo <code>showPasscodeController()</code> dentro del <code>ParentalControlCoordinator</code>, y verificar <code>LAContext</code>, pero el problema persistía.</p>
+                
+                <h2>Estado Actual y Lo Que Queda</h2>
+                
+                <p>La funcionalidad está actualmente en un estado avanzado y testeable. Protege exitosamente todas las acciones principales y proporciona una buena experiencia de usuario gracias a la lógica de sesión de desbloqueo.</p>
+                
+                <p>Sin embargo, <strong>la merge request aún no ha sido fusionada upstream</strong> debido al <strong>conflicto no resuelto con Face ID</strong>, que parece requerir investigación más profunda y colaboración.</p>
+                
+                <h2>Reflexiones</h2>
+                
+                <p>Este proyecto ha sido <strong>un viaje increíble</strong>. Tuve la libertad de diseñar la lógica y estructurar la arquitectura. Esa autonomía creativa es uno de los aspectos más gratificantes de trabajar en código abierto.</p>
+                
+                <p>Al mismo tiempo, me llevó a mis límites. Tuve que aprender Git de la manera difícil, sumergirme en una base de código grande y arreglar bugs que ni siquiera sabía cómo describir al principio.</p>
+                
+                <p>Aunque aún no ha sido fusionado, realmente creo que este es el <strong>primer borrador sólido</strong> de una funcionalidad significativa. Una que puede ser refinada y eventualmente agregada al VLC para iOS para mejorar la experiencia para familias alrededor del mundo.</p>
             </div>
         </div>
     </section>
