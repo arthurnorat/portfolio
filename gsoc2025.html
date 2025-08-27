@@ -103,7 +103,7 @@
                 
                 <p>With the authentication logic working, I moved on to protecting individual features. To avoid duplicating code, I created a centralized method:</p>
                 
-                <pre><code>func authorizeIfParentalControlIsEnabled(with action: @escaping () -> Void)</code></pre>
+                <pre><code>func authorizeIfParentalControlIsEnabled(action: @escaping @convention(block) () -> Void, fail: (@convention(block) () -> Void)? = nil)</code></pre>
                 
                 <p>This method was then called before each restricted action. Here's how it was integrated across the app:</p>
                 

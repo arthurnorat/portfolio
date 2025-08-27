@@ -103,7 +103,7 @@
                 
                 <p>Com a lógica de autenticação funcionando, passei a proteger funcionalidades individuais. Para evitar duplicação de código, criei um método centralizado:</p>
                 
-                <pre><code>func authorizeIfParentalControlIsEnabled(with action: @escaping () -> Void)</code></pre>
+                <pre><code>func authorizeIfParentalControlIsEnabled(action: @escaping @convention(block) () -> Void, fail: (@convention(block) () -> Void)? = nil)</code></pre>
                 
                 <p>Este método era então chamado antes de cada ação restrita. Aqui está como foi integrado em todo o aplicativo:</p>
                 
