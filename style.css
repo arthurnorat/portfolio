@@ -99,6 +99,55 @@ a:hover {
     background-color: #f0f0f0;
 }
 
+/* IMAGE CONTAINERS */
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 1rem;
+}
+
+.code-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+/* Reduzir tamanho das imagens específicas para 30% */
+.code-image[src*="toggle_2.png"],
+.code-image[src*="passcode.png"],
+.code-image[src*="faceid.png"] {
+    max-width: 30%;
+    height: auto;
+}
+
+/* Reduzir tamanho das imagens de código para 90% */
+.code-image[src*="authenticate.png"],
+.code-image[src*="authorize.png"] {
+    max-width: 90%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .code-image {
+        max-width: 90%;
+    }
+    
+    .code-image[src*="toggle_2.png"],
+    .code-image[src*="passcode.png"],
+    .code-image[src*="faceid.png"] {
+        max-width: 40%;
+    }
+    
+    .code-image[src*="authenticate.png"],
+    .code-image[src*="authorize.png"] {
+        max-width: 95%;
+    }
+}
+
 /* SECTIONS */
 
 section {

@@ -89,9 +89,21 @@
                 
                 <pre><code>func authenticate(completion: @escaping (Bool) -> Void)</code></pre>
                 
+                <div class="image-container">
+                    <img src="../assets/toggle_2.png" alt="Pantalla de Configuración con Toggles" class="code-image">
+                </div>
+                
+                <div class="image-container">
+                    <img src="../assets/authenticate.png" alt="Función Swift Authenticate" class="code-image">
+                </div>
+                
                 <p>Verificaba si el control parental estaba habilitado y, si es así, llamaba:</p>
                 
                 <pre><code>keychain.validateSecret(allowBiometricAuthentication: true, isCancellable: true)</code></pre>
+                
+                <div class="image-container">
+                    <img src="../assets/passcode.png" alt="Pantalla de Entrada de Código" class="code-image">
+                </div>
                 
                 <p>Esto funcionaba en algunos escenarios pero reveló una gran falla arquitectónica: <strong>la funcionalidad de control parental estaba vinculada al Passcode Lock</strong>, una funcionalidad que solicita al usuario que ingrese un código de acceso al abrir la aplicación. Si el Passcode Lock estuviera deshabilitado, el control parental no funcionaría en absoluto.</p>
                 
@@ -104,6 +116,10 @@
                 <p>Con la lógica de autenticación funcionando, pasé a proteger funcionalidades individuales. Para evitar duplicación de código, creé un método centralizado:</p>
                 
                 <pre><code>func authorizeIfParentalControlIsEnabled(action: @escaping @convention(block) () -> Void, fail: (@convention(block) () -> Void)? = nil)</code></pre>
+                
+                <div class="image-container">
+                    <img src="../assets/authorize.png" alt="Función Swift Authorize" class="code-image">
+                </div>
                 
                 <p>Este método era entonces llamado antes de cada acción restringida. Aquí está cómo fue integrado en toda la aplicación:</p>
                 
@@ -134,6 +150,10 @@
                 <p>El último y más frustrante desafío fue la <strong>integración del Face ID</strong>. Si el usuario abría la aplicación usando Face ID (via Passcode Lock), luego intentaba autenticar nuevamente para control parental, la pantalla del Face ID aparecería repetidamente y nunca se descartaría.</p>
                 
                 <p>Aunque la autenticación fuera <strong>técnicamente exitosa</strong>, el prompt biométrico permanecería visible. Intenté de todo, desde refactorizar los métodos existentes hasta crear un nuevo <code>showPasscodeController()</code> dentro del <code>ParentalControlCoordinator</code>, y verificar <code>LAContext</code>, pero el problema persistía.</p>
+                
+                <div class="image-container">
+                    <img src="../assets/faceid.png" alt="Pantalla de Autenticación Face ID" class="code-image">
+                </div>
                 
                 <h2>Estado Actual y Lo Que Queda</h2>
                 
