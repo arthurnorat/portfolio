@@ -111,6 +111,10 @@
                 
                 <p>To solve this, I created a <strong>separate keychain entry</strong> dedicated to parental control. I then refactored <code>ParentalControlCoordinator</code> to remove all dependencies on <code>UserDefaults</code> and reused the <code>KeychainCoordinator</code> only for logic related to displaying the passcode screen. This allowed parental control and passcode lock to <strong>function completely independently</strong>, just as they should.</p>
                 
+                <div class="image-container">
+                    <img src="./assets/keychain.png" alt="Keychain Implementation" class="code-image">
+                </div>
+                
                 <h2>Protecting Actions – Method by Method</h2>
                 
                 <p>With the authentication logic working, I moved on to protecting individual features. To avoid duplicating code, I created a centralized method:</p>

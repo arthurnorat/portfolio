@@ -124,6 +124,12 @@ a:hover {
     height: auto;
 }
 
+/* Tamanho especial para keychain - 60% (dobro do tamanho das outras) */
+.code-image[src*="keychain.png"] {
+    max-width: 60%;
+    height: auto;
+}
+
 /* Reduzir tamanho das imagens de código para 90% */
 .code-image[src*="authenticate.png"],
 .code-image[src*="authorize.png"] {
@@ -140,6 +146,10 @@ a:hover {
     .code-image[src*="passcode.png"],
     .code-image[src*="faceid.png"] {
         max-width: 40%;
+    }
+    
+    .code-image[src*="keychain.png"] {
+        max-width: 70%;
     }
     
     .code-image[src*="authenticate.png"],

@@ -111,6 +111,10 @@
                 
                 <p>Para resolver esto, creé una <strong>entrada separada en el keychain</strong> dedicada al control parental. Luego refactoricé el <code>ParentalControlCoordinator</code> para eliminar todas las dependencias de <code>UserDefaults</code> y reutilicé el <code>KeychainCoordinator</code> solo para lógica relacionada con mostrar la pantalla de código de acceso. Esto permitió que el control parental y el bloqueo por código funcionaran <strong>completamente independientes</strong>, como deberían.</p>
                 
+                <div class="image-container">
+                    <img src="../assets/keychain.png" alt="Implementación del Keychain" class="code-image">
+                </div>
+                
                 <h2>Protegiendo Acciones – Método por Método</h2>
                 
                 <p>Con la lógica de autenticación funcionando, pasé a proteger funcionalidades individuales. Para evitar duplicación de código, creé un método centralizado:</p>
