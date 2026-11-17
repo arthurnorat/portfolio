@@ -1,7 +1,7 @@
 {
   "meta": {
-    "homeTitle": "Arthur Norat | Desenvolvedor iOS e Backend",
-    "homeDescription": "Arthur Norat é desenvolvedor de software: faz apps iOS com Swift e back-ends com Java e Spring Boot. Projetos, contribuições open source e contato.",
+    "homeTitle": "Arthur Norat | Desenvolvedor Apple e Backend",
+    "homeDescription": "Arthur Norat é desenvolvedor de software: faz apps para as plataformas Apple com Swift e back-ends com Java e Spring Boot. Projetos, contribuições open source e contato.",
     "gsocTitle": "GSoC 2025 - VideoLAN | Arthur Norat",
     "gsocDescription": "Avaliação final do meu projeto no Google Summer of Code 2025 com a VideoLAN: uma função de Controle Parental para o app VLC iOS, escrita em Swift."
   },
@@ -19,8 +19,8 @@
   },
   "hero": {
     "greeting": "Olá, eu sou o",
-    "role": "Desenvolvedor iOS e Backend",
-    "summary": "Crio apps iOS com Swift e back-ends com Java e Spring Boot.",
+    "role": "Desenvolvedor Apple e Backend",
+    "summary": "Crio apps para as plataformas Apple com Swift e back-ends com Java e Spring Boot.",
     "resume": "Currículo",
     "contact": "Contato",
     "linkedinAlt": "Meu Perfil no LinkedIn",
@@ -55,13 +55,13 @@
     "title": "Sobre Mim",
     "paragraphs": [
       "Sou estudante de Engenharia de Software na Estácio, formado em Direito e Analista Judiciário no serviço público brasileiro. Estou em transição para a área de tecnologia e aprendo construindo projetos completos, um passo pequeno de cada vez.",
-      "Comecei com desenvolvimento iOS em Swift e hoje também construo back-ends com Java e Spring Boot. Em 2025 participei do Google Summer of Code com a VideoLAN, meu primeiro projeto de código aberto. Moro em São Paulo e busco a minha primeira oportunidade como desenvolvedor de software."
+      "Desenvolvo apps para as plataformas Apple, iOS e macOS, com Swift, e back-ends com Java e Spring Boot. Em 2025 participei do Google Summer of Code com a VideoLAN, meu primeiro projeto de código aberto. Moro em São Paulo."
     ],
     "photoAlt": "Arthur Norat sorrindo ao ar livre"
   },
   "contact": {
     "title": "Entre em Contato",
-    "text": "Estou em busca da minha primeira oportunidade em desenvolvimento de software e sempre gosto de conversar sobre projetos. O jeito mais rápido de falar comigo é pelo LinkedIn.",
+    "text": "Gosto de conversar sobre projetos e oportunidades. O jeito mais rápido de falar comigo é pelo LinkedIn.",
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "email": "E-mail",
