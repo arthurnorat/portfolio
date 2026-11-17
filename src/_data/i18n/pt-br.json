@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "projects": "Projetos",
+    "experience": "Experiência",
+    "about": "Sobre mim",
+    "portfolio": "Portfólio"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou o",
+    "role": "Desenvolvedor Web e iOS",
+    "resume": "Currículo",
+    "contact": "Contato",
+    "linkedinAlt": "Meu Perfil no LinkedIn",
+    "githubAlt": "Meu Perfil no Github",
+    "photoAlt": "Foto de Perfil de Arthur Norat"
+  },
+  "projects": {
+    "eyebrow": "Meus últimos",
+    "title": "Projetos",
+    "github": "GitHub",
+    "liveDemo": "Live Demo",
+    "descriptions": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis sit amet lorem gravida porttitor. Nam ullamcorper ex sed lectus lacinia lacinia. In tempus, purus bibendum rhoncus accumsan, nisi ante pulvinar ligula, in ultricies arcu lacus at massa. Integer in metus vel erat aliquet ullamcorper eu ut dolor.",
+      "Maecenas venenatis ultricies ligula. Curabitur cursus urna id elit iaculis laoreet. Mauris tempus neque eu bibendum consectetur. Aliquam tempus lectus tellus, finibus tincidunt tellus efficitur nec. Maecenas purus nisl, egestas sed mauris eget, imperdiet pharetra augue. Nulla facilisi.",
+      "Sed ultrices lacus sed aliquet tincidunt. Praesent posuere turpis at nisl volutpat, vel vulputate nulla luctus. Pellentesque non est et tortor pellentesque tempor. Morbi a sem non ipsum consequat porta eget vel felis. Proin non nulla eu mi ullamcorper maximus id ut tellus. Vivamus suscipit mi quis rutrum rhoncus."
+    ]
+  },
+  "experience": {
+    "eyebrow": "Minha",
+    "title": "Experiência",
+    "description": "Estou trabalhando no aplicativo VLC iOS, um player de vídeo para dispositivos iOS.",
+    "evaluation": "Avaliação Final",
+    "viewCode": "Ver Código"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "paragraphs": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+    ]
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados."
+  },
+  "gsoc": {
+    "category": "Google Summer of Code 2025",
+    "title": "Função de Controle Parental",
+    "dates": "Junho - Agosto 2025",
+    "stack": "Swift, Objective-C, iOS",
+    "openSource": "Código Aberto",
+    "viewGitlab": "Ver no GitLab",
+    "projectPage": "Página do Projeto GSoC"
+  }
+}

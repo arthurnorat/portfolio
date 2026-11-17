@@ -79,13 +79,20 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
+    width: auto;
+    min-width: 2.5rem;
     height: 2.5rem;
+    padding: 0 0.6rem;
     border: 2px solid transparent;
-    border-radius: 50%;
-    font-size: 1.2rem;
+    border-radius: 1.25rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
     background: transparent;
+}
+
+.lang-btn:focus-visible {
+    outline: 2px solid #555555;
+    outline-offset: 2px;
 }
 
 .lang-btn:hover {
@@ -915,9 +922,11 @@ a, button {
     }
     
     .lang-btn {
-        width: 2rem;
+        min-width: 2rem;
         height: 2rem;
-        font-size: 1rem;
+        padding: 0 0.4rem;
+        border-radius: 1rem;
+        font-size: 0.8rem;
     }
     
     /* About section mobile */

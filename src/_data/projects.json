@@ -1,0 +1,5 @@
+[
+  { "name": "Tipsy", "images": ["tipsy_1.png", "tipsy_2.png"], "imagesFirst": true },
+  { "name": "Budget Tracker", "images": ["budget_tracker.png", "budget_tracker.png"], "imagesFirst": false },
+  { "name": "Quizzler", "images": ["quizzler.png", "quizzler.png"], "imagesFirst": true }
+]

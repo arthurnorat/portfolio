@@ -1,0 +1,26 @@
+[
+  {
+    "code": "en",
+    "htmlLang": "en",
+    "path": "",
+    "root": "./",
+    "short": "EN",
+    "name": "English (US)"
+  },
+  {
+    "code": "pt-br",
+    "htmlLang": "pt-BR",
+    "path": "pt-br/",
+    "root": "../",
+    "short": "PT",
+    "name": "Português (Brasil)"
+  },
+  {
+    "code": "es",
+    "htmlLang": "es",
+    "path": "es/",
+    "root": "../",
+    "short": "ES",
+    "name": "Español (MX)"
+  }
+]
