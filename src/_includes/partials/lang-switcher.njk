@@ -1,5 +1,5 @@
-{#- Language switcher. Each link points to the same page in another language.
+{#- Language switcher links. Each link points to the same page in another language.
     `switchTarget` is the page file name ("" for the home page). -#}
 {% for other in languages %}
-<a href="{{ lang.root }}{{ other.path }}{{ switchTarget }}" class="lang-btn{% if other.code == lang.code %} active{% endif %}" lang="{{ other.htmlLang }}" hreflang="{{ other.htmlLang }}" title="{{ other.name }}" aria-label="{{ other.name }}"{% if other.code == lang.code %} aria-current="page"{% endif %}>{{ other.short }}</a>
+<a href="{{ lang.root }}{{ other.path }}{{ switchTarget }}" class="lang-btn" lang="{{ other.htmlLang }}" hreflang="{{ other.htmlLang }}" title="{{ other.name }}" aria-label="{{ other.name }}"{% if other.code == lang.code %} aria-current="page"{% endif %}>{{ other.short }}</a>
 {% endfor %}

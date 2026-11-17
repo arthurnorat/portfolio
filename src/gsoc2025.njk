@@ -5,10 +5,11 @@ pagination:
   size: 1
   alias: lang
 permalink: "{{ lang.path }}gsoc2025.html"
-pageTitle: "GSoC 2025 - VideoLAN | Arthur Norat"
+pageKind: gsoc
 switchTarget: "gsoc2025.html"
 ---
-{% set t = i18n[lang.code] %}
+{%- set t = i18n[lang.code] -%}
+{%- from "partials/icons.njk" import icon -%}
 {% extends "layouts/base.njk" %}
 
 {% block navLinks %}
@@ -16,53 +17,21 @@ switchTarget: "gsoc2025.html"
 {% endblock %}
 
 {% block content %}
-<!-- PROJECT HEADER -->
+<section class="page-header" aria-labelledby="page-title">
+    <p class="eyebrow">{{ t.gsoc.category }}</p>
+    <h1 id="page-title" class="page-title">{{ t.gsoc.title }}</h1>
+    <ul class="meta">
+        <li>{{ icon("calendar") }} {{ t.gsoc.dates }}</li>
+        <li>{{ icon("code") }} {{ t.gsoc.stack }}</li>
+        <li>{{ icon("branch") }} {{ t.gsoc.openSource }}</li>
+    </ul>
+    <div class="btn-group">
+        <a class="btn" href="{{ site.vlcMergeRequest }}" target="_blank" rel="noopener noreferrer">{{ t.gsoc.viewGitlab }}</a>
+        <a class="btn" href="{{ site.gsocProjectPage }}" target="_blank" rel="noopener noreferrer">{{ t.gsoc.projectPage }}</a>
+    </div>
+</section>
 
-    <section id="project-header">
-        <div class="header-container">
-            <div class="header-content">
-                <div class="header-text">
-                    <p class="project-category">{{ t.gsoc.category }}</p>
-                    <h1 class="project-title">{{ t.gsoc.title }}</h1>
-                    <div class="project-meta">
-                        <span class="meta-item">
-                            <i class='bx bx-calendar'></i>
-                            {{ t.gsoc.dates }}
-                        </span>
-                        <span class="meta-item">
-                            <i class='bx bx-code-alt'></i>
-                            {{ t.gsoc.stack }}
-                        </span>
-                        <span class="meta-item">
-                            <i class='bx bx-git-branch'></i>
-                            {{ t.gsoc.openSource }}
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- PROJECT LINKS -->
-
-    <section id="project-links">
-        <div class="btn-container">
-            <a href="{{ site.vlcMergeRequest }}" target="_blank" rel="noopener noreferrer">
-                <button class="btn-1">{{ t.gsoc.viewGitlab }}</button>
-            </a>
-            <a href="{{ site.gsocProjectPage }}" target="_blank" rel="noopener noreferrer">
-                <button class="btn-2">{{ t.gsoc.projectPage }}</button>
-            </a>
-        </div>
-    </section>
-
-<!-- ARTICLE CONTENT -->
-
-    <section id="article-content">
-        <div class="article-container">
-            <div class="article-body">
+<article class="article">
 {% include "gsoc/" + lang.code + ".html" %}
-            </div>
-        </div>
-    </section>
+</article>
 {% endblock %}

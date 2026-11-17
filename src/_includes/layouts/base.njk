@@ -1,36 +1,58 @@
+{#- Shared page skeleton. A page sets `pageKind` ("home" or "gsoc") and `switchTarget`. -#}
+{%- set pageTitle = t.meta.homeTitle if pageKind == "home" else t.meta.gsocTitle -%}
+{%- set pageDescription = t.meta.homeDescription if pageKind == "home" else t.meta.gsocDescription -%}
+{%- set pageUrl = site.url + lang.path + switchTarget -%}
 <!DOCTYPE html>
 <html lang="{{ lang.htmlLang }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ pageTitle }}</title>
+    <meta name="description" content="{{ pageDescription }}">
+    <link rel="canonical" href="{{ pageUrl }}">
+    {% for other in languages %}
+    <link rel="alternate" hreflang="{{ other.htmlLang }}" href="{{ site.url }}{{ other.path }}{{ switchTarget }}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ languages[0].path }}{{ switchTarget }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:title" content="{{ pageTitle }}">
+    <meta property="og:description" content="{{ pageDescription }}">
+    <meta property="og:url" content="{{ pageUrl }}">
+    <meta property="og:locale" content="{{ lang.ogLocale }}">
+    <meta property="og:image" content="{{ site.url }}assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preload" href="{{ lang.root }}assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ lang.root }}assets/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ lang.root }}style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" href="{{ lang.root }}assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{ lang.root }}assets/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{ lang.root }}assets/apple-touch-icon.png">
 </head>
 <body>
+<a class="skip-link" href="#main">{{ t.a11y.skipLink }}</a>
 
-<!-- NAVIGATION -->
-<nav id="desktop-nav">
-    <div class="logo">{{ site.name }}</div>
-    <div>
+<header class="site-header">
+    <a class="logo" href="{{ lang.root }}{{ lang.path }}">{{ site.name }}</a>
+    <nav class="main-nav" aria-label="{{ t.a11y.mainNavigation }}">
         <ul class="nav-links">
             {% block navLinks %}{% endblock %}
-            <li class="lang-switcher">
-                {% include "partials/lang-switcher.njk" %}
-            </li>
         </ul>
+    </nav>
+    <div class="lang-switcher" role="group" aria-label="{{ t.a11y.language }}">
+        {% include "partials/lang-switcher.njk" %}
     </div>
-</nav>
+</header>
 
+<main id="main">
 {% block content %}{% endblock %}
+</main>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <p>&copy; {{ site.year }} {{ site.name }}. {{ t.footer.rights }}</p>
+<footer class="site-footer">
+    <p>&copy; {{ build.year }} {{ site.name }}. {{ t.footer.rights }}</p>
 </footer>
 
 </body>

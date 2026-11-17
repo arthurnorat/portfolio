@@ -5,120 +5,117 @@ pagination:
   size: 1
   alias: lang
 permalink: "{{ lang.path }}index.html"
-pageTitle: "Arthur Norat"
+pageKind: home
 switchTarget: ""
 ---
-{% set t = i18n[lang.code] %}
+{%- set t = i18n[lang.code] -%}
+{%- set resumeFile = site.resume[lang.code] -%}
 {% extends "layouts/base.njk" %}
 
 {% block navLinks %}
             <li><a href="#projects">{{ t.nav.projects }}</a></li>
             <li><a href="#experience">{{ t.nav.experience }}</a></li>
             <li><a href="#about">{{ t.nav.about }}</a></li>
+            <li><a href="#contact">{{ t.nav.contact }}</a></li>
 {% endblock %}
 
 {% block content %}
-<!-- HERO SECTION -->
-
-    <section id="hero">
-        <div class="hero-text">
-            <p class="p1">{{ t.hero.greeting }}</p>
-            <h1 class="title">Arthur</h1>
-            <p class="p2">{{ t.hero.role }}</p>
-            <div class="btn-container">
-                <button class="btn-1">{{ t.hero.resume }}</button>
-                <button class="btn-2">{{ t.hero.contact }}</button>
-            </div>
-            <div id="socials-container">
+<section id="hero" class="hero" aria-labelledby="hero-title">
+    <div class="hero-text">
+        <p class="hero-greeting">{{ t.hero.greeting }}</p>
+        <h1 id="hero-title" class="hero-title">Arthur</h1>
+        <p class="hero-role">{{ t.hero.role }}</p>
+        <p class="hero-summary">{{ t.hero.summary }}</p>
+        <div class="btn-group">
+            {% if resumeFile %}<a class="btn" href="{{ lang.root }}{{ resumeFile }}" target="_blank" rel="noopener noreferrer">{{ t.hero.resume }}</a>{% endif %}
+            <a class="btn" href="#contact">{{ t.hero.contact }}</a>
+        </div>
+        <ul class="socials">
+            <li>
                 <a href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">
-                    <img
-                        src="{{ lang.root }}assets/linkedin.png"
-                        alt="{{ t.hero.linkedinAlt }}"
-                        class="icon">
+                    <img src="{{ lang.root }}assets/linkedin.png" width="96" height="96" alt="{{ t.hero.linkedinAlt }}" class="icon">
                 </a>
+            </li>
+            <li>
                 <a href="{{ site.github }}" target="_blank" rel="noopener noreferrer">
-                    <img
-                        src="{{ lang.root }}assets/github.png"
-                        alt="{{ t.hero.githubAlt }}"
-                        class="icon">
+                    <img src="{{ lang.root }}assets/github.png" width="96" height="96" alt="{{ t.hero.githubAlt }}" class="icon">
                 </a>
-            </div>
-        </div>
-        <div class="pic-container">
-            <img src="{{ lang.root }}assets/headshot.png" alt="{{ t.hero.photoAlt }}">
-        </div>
-    </section>
+            </li>
+        </ul>
+    </div>
+    <div class="hero-photo">
+        <img src="{{ lang.root }}assets/headshot.webp" width="800" height="800" alt="{{ t.hero.photoAlt }}" fetchpriority="high">
+    </div>
+</section>
 
-<!-- PROJECTS -->
-
-    <section id="projects">
-        <p class="section_text_p1">{{ t.projects.eyebrow }}</p>
-        <h1 class="section_title">{{ t.projects.title }}</h1>
-        <div class="projects-container">
-            {% for project in projects %}
-            {% set pictures %}
-                <div class="pic-container">
-                    {% for image in project.images %}
-                    <img src="{{ lang.root }}assets/{{ image }}" alt="{{ project.name }}">
-                    {% endfor %}
-                </div>
-            {% endset %}
-            {% set text %}
-                <div class="{{ 'project-text' if project.imagesFirst else 'project-text-right' }}">
-                    <h3>{{ project.name }}</h3>
-                    <p>{{ t.projects.descriptions[loop.index0] }}</p>
-                    <div class="btn-container">
-                        <button class="btn-1">{{ t.projects.github }}</button>
-                        <button class="btn-2">{{ t.projects.liveDemo }}</button>
-                    </div>
-                </div>
-            {% endset %}
-            <div class="project-item">
-                {% if project.imagesFirst %}{{ pictures | safe }}{{ text | safe }}{% else %}{{ text | safe }}{{ pictures | safe }}{% endif %}
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-
-<!-- EXPERIENCE -->
-
-    <section id="experience">
-        <p class="section_text_p1">{{ t.experience.eyebrow }}</p>
-        <h1 class="section_title">{{ t.experience.title }}</h1>
-        <div class="experience-container">
-            <div class="experience-item">
-                <div class="pic-container">
-                    <img src="{{ lang.root }}assets/vlc.png" alt="VideoLAN">
-                </div>
-                <div class="experience-text">
-                    <h3>GSoC 2025, VideoLAN</h3>
-                    <p>{{ t.experience.description }}</p>
-                    <div class="btn-container">
-                        <a href="{{ lang.root }}{{ lang.path }}gsoc2025.html">
-                            <button class="btn-1">{{ t.experience.evaluation }}</button>
-                        </a>
-                        <a href="{{ site.vlcMergeRequest }}" target="_blank" rel="noopener noreferrer">
-                            <button class="btn-2">{{ t.experience.viewCode }}</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- ABOUT ME -->
-
-    <section id="about">
-        <div class="about-container">
-            <div class="about-image">
-                <img src="{{ lang.root }}assets/headshot.png" alt="{{ site.name }}">
-            </div>
-            <div class="about-text">
-                <h2>{{ t.about.title }}</h2>
-                {% for paragraph in t.about.paragraphs %}
-                <p>{{ paragraph }}</p>
+<section id="projects" class="section" aria-labelledby="projects-title">
+    <p class="eyebrow">{{ t.projects.eyebrow }}</p>
+    <h2 id="projects-title" class="section-title">{{ t.projects.title }}</h2>
+    <div class="items">
+        {% for project in projects %}
+        <article class="item{% if project.images | length %} item--media{% endif %}">
+            {% if project.images | length %}
+            <div class="item-media">
+                {% for image in project.images %}
+                <img src="{{ lang.root }}assets/{{ image.file }}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ t.projects.screenshots[project.id][loop.index0] }}" loading="lazy">
                 {% endfor %}
             </div>
-        </div>
-    </section>
+            {% endif %}
+            <div class="item-body">
+                <h3>{{ project.name }}</h3>
+                <p class="item-tech">{{ project.tech }}</p>
+                <p>{{ t.projects.descriptions[project.id] }}</p>
+                <ul class="btn-group">
+                    {% for link in project.links %}
+                    <li><a class="btn" href="{{ link.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ t.projects.sourceCodeOf }} {{ project.name }}: {{ link.label }}">{{ link.label }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="experience" class="section" aria-labelledby="experience-title">
+    <p class="eyebrow">{{ t.experience.eyebrow }}</p>
+    <h2 id="experience-title" class="section-title">{{ t.experience.title }}</h2>
+    <div class="items">
+        <article class="item item--media item--logo">
+            <div class="item-media">
+                <img src="{{ lang.root }}assets/vlc.webp" width="400" height="400" alt="{{ t.experience.logoAlt }}" loading="lazy">
+            </div>
+            <div class="item-body">
+                <h3>GSoC 2025, VideoLAN</h3>
+                <p>{{ t.experience.description }}</p>
+                <div class="btn-group">
+                    <a class="btn" href="{{ lang.root }}{{ lang.path }}gsoc2025.html">{{ t.experience.evaluation }}</a>
+                    <a class="btn" href="{{ site.vlcMergeRequest }}" target="_blank" rel="noopener noreferrer">{{ t.experience.viewCode }}</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section id="about" class="section about" aria-labelledby="about-title">
+    <div class="about-image">
+        <img src="{{ lang.root }}assets/about.webp" width="800" height="800" alt="{{ t.about.photoAlt }}" loading="lazy">
+    </div>
+    <div class="about-text">
+        <h2 id="about-title">{{ t.about.title }}</h2>
+        {% for paragraph in t.about.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="contact" class="section contact" aria-labelledby="contact-title">
+    <h2 id="contact-title">{{ t.contact.title }}</h2>
+    <p>{{ t.contact.text }}</p>
+    <ul class="btn-group">
+        <li><a class="btn" href="{{ site.linkedin }}" target="_blank" rel="noopener noreferrer">{{ t.contact.linkedin }}</a></li>
+        <li><a class="btn" href="{{ site.github }}" target="_blank" rel="noopener noreferrer">{{ t.contact.github }}</a></li>
+        {% if site.email %}<li><a class="btn" href="mailto:{{ site.email }}">{{ t.contact.email }}</a></li>{% endif %}
+        {% if resumeFile %}<li><a class="btn" href="{{ lang.root }}{{ resumeFile }}" target="_blank" rel="noopener noreferrer">{{ t.contact.resume }}</a></li>{% endif %}
+    </ul>
+</section>
 {% endblock %}
