@@ -54,7 +54,7 @@
   "about": {
     "title": "About Me",
     "paragraphs": [
-      "I'm a Software Engineering student at Estácio, with a degree in Law and a career as a Judiciary Analyst in the Brazilian public service. I'm now moving into technology, and I learn by building complete projects, one small step at a time.",
+      "I study Software Engineering at Estácio and work as a Judiciary Analyst, with a degree in Law. That background gave me analytical thinking, attention to detail and a strong sense of responsibility, and I apply them to every system I build, from the API to the app.",
       "I build apps for Apple platforms, iOS and macOS, with Swift, and backends with Java and Spring Boot. In 2025 I took part in Google Summer of Code with VideoLAN, my first open source project. I'm based in São Paulo, Brazil."
     ],
     "photoAlt": "Arthur Norat smiling outdoors"

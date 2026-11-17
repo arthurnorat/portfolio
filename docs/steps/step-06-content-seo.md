@@ -80,7 +80,7 @@ Detalhes importantes:
 
 Não consegui, por conta própria, e deixei preparado:
 
-1. **Revisar os textos.** São rascunhos nas três línguas. Em especial, confirme: o primeiro parágrafo do "Sobre mim", que ainda diz que você está "em transição para a tecnologia" (veio do README do seu perfil e pode soar como iniciante), a data de formatura (não incluí), e se quer mencionar o Direito e o serviço público.
+1. **Revisar os textos.** São rascunhos nas três línguas. Em especial, confirme: o primeiro parágrafo do "Sobre mim", reescrito para destacar a bagagem em Direito (raciocínio analítico, atenção aos detalhes, senso de responsabilidade, que são palavras suas no README do perfil) em vez de falar em transição de carreira, e a data de formatura, que não foi incluída.
 2. **E-mail público** (e se prefere um alias só para o portfólio).
 3. **PDF do currículo** (um ou por idioma).
 4. **Screenshots do Home Budget e do MenuBarTimer** (os cartões deles hoje não têm imagem). Basta adicionar a lista `images` em `projects.json` e os arquivos em `assets/`. Cuidado para não mostrar dados reais de gastos.
