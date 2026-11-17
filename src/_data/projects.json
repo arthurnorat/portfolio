@@ -1,5 +1,36 @@
 [
-  { "name": "Tipsy", "images": ["tipsy_1.png", "tipsy_2.png"], "imagesFirst": true },
-  { "name": "Budget Tracker", "images": ["budget_tracker.png", "budget_tracker.png"], "imagesFirst": false },
-  { "name": "Quizzler", "images": ["quizzler.png", "quizzler.png"], "imagesFirst": true }
+  {
+    "id": "homeBudget",
+    "name": "Home Budget",
+    "tech": "Java 21 · Spring Boot · Firestore · Google Cloud Run · Angular · SwiftUI · Kotlin",
+    "images": [],
+    "links": [
+      { "label": "API", "url": "https://github.com/arthurnorat/home-budget-api" },
+      { "label": "Web", "url": "https://github.com/arthurnorat/home-budget-web" },
+      { "label": "macOS", "url": "https://github.com/arthurnorat/home-budget-macos" },
+      { "label": "iOS", "url": "https://github.com/arthurnorat/home-budget-ios" },
+      { "label": "Android", "url": "https://github.com/arthurnorat/home-budget-android" }
+    ]
+  },
+  {
+    "id": "menuBarTimer",
+    "name": "MenuBarTimer",
+    "tech": "Swift · macOS 13+",
+    "images": [],
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/arthurnorat/menu-bar-timer" }
+    ]
+  },
+  {
+    "id": "tipsy",
+    "name": "Tipsy",
+    "tech": "Swift · UIKit",
+    "images": [
+      { "file": "tipsy_1.webp", "width": 480, "height": 1041 },
+      { "file": "tipsy_2.webp", "width": 480, "height": 1041 }
+    ],
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/arthurnorat/Gorjetas" }
+    ]
+  }
 ]

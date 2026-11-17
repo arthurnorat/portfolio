@@ -1,8 +1,14 @@
 {
   "name": "Arthur Norat",
-  "year": 2025,
+  "url": "https://arthurnorat.github.io/portfolio/",
   "linkedin": "https://www.linkedin.com/in/arthurnorat/",
   "github": "https://github.com/arthurnorat",
   "vlcMergeRequest": "https://code.videolan.org/videolan/vlc-ios/-/merge_requests/1457",
-  "gsocProjectPage": "https://summerofcode.withgoogle.com/programs/2025/projects/LQHsm73T"
+  "gsocProjectPage": "https://summerofcode.withgoogle.com/programs/2025/projects/LQHsm73T",
+  "email": "",
+  "resume": {
+    "en": "",
+    "pt-br": "",
+    "es": ""
+  }
 }

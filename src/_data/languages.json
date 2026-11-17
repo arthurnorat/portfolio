@@ -2,6 +2,7 @@
   {
     "code": "en",
     "htmlLang": "en",
+    "ogLocale": "en_US",
     "path": "",
     "root": "./",
     "short": "EN",
@@ -10,6 +11,7 @@
   {
     "code": "pt-br",
     "htmlLang": "pt-BR",
+    "ogLocale": "pt_BR",
     "path": "pt-br/",
     "root": "../",
     "short": "PT",
@@ -18,6 +20,7 @@
   {
     "code": "es",
     "htmlLang": "es",
+    "ogLocale": "es_MX",
     "path": "es/",
     "root": "../",
     "short": "ES",

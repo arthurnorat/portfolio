@@ -1,43 +1,71 @@
 {
+  "meta": {
+    "homeTitle": "Arthur Norat | Desenvolvedor iOS e Backend",
+    "homeDescription": "Arthur Norat é desenvolvedor de software: faz apps iOS com Swift e back-ends com Java e Spring Boot. Projetos, contribuições open source e contato.",
+    "gsocTitle": "GSoC 2025 - VideoLAN | Arthur Norat",
+    "gsocDescription": "Avaliação final do meu projeto no Google Summer of Code 2025 com a VideoLAN: uma função de Controle Parental para o app VLC iOS, escrita em Swift."
+  },
+  "a11y": {
+    "skipLink": "Pular para o conteúdo",
+    "mainNavigation": "Principal",
+    "language": "Idioma"
+  },
   "nav": {
     "projects": "Projetos",
     "experience": "Experiência",
     "about": "Sobre mim",
+    "contact": "Contato",
     "portfolio": "Portfólio"
   },
   "hero": {
     "greeting": "Olá, eu sou o",
-    "role": "Desenvolvedor Web e iOS",
+    "role": "Desenvolvedor iOS e Backend",
+    "summary": "Crio apps iOS com Swift e back-ends com Java e Spring Boot.",
     "resume": "Currículo",
     "contact": "Contato",
     "linkedinAlt": "Meu Perfil no LinkedIn",
-    "githubAlt": "Meu Perfil no Github",
+    "githubAlt": "Meu Perfil no GitHub",
     "photoAlt": "Foto de Perfil de Arthur Norat"
   },
   "projects": {
     "eyebrow": "Meus últimos",
     "title": "Projetos",
-    "github": "GitHub",
-    "liveDemo": "Live Demo",
-    "descriptions": [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis sit amet lorem gravida porttitor. Nam ullamcorper ex sed lectus lacinia lacinia. In tempus, purus bibendum rhoncus accumsan, nisi ante pulvinar ligula, in ultricies arcu lacus at massa. Integer in metus vel erat aliquet ullamcorper eu ut dolor.",
-      "Maecenas venenatis ultricies ligula. Curabitur cursus urna id elit iaculis laoreet. Mauris tempus neque eu bibendum consectetur. Aliquam tempus lectus tellus, finibus tincidunt tellus efficitur nec. Maecenas purus nisl, egestas sed mauris eget, imperdiet pharetra augue. Nulla facilisi.",
-      "Sed ultrices lacus sed aliquet tincidunt. Praesent posuere turpis at nisl volutpat, vel vulputate nulla luctus. Pellentesque non est et tortor pellentesque tempor. Morbi a sem non ipsum consequat porta eget vel felis. Proin non nulla eu mi ullamcorper maximus id ut tellus. Vivamus suscipit mi quis rutrum rhoncus."
-    ]
+    "sourceCodeOf": "Código-fonte de",
+    "descriptions": {
+      "homeBudget": "Um sistema de orçamento doméstico para duas pessoas: uma API REST em Java 21 e Spring Boot, com dados no Firestore e hospedada no Google Cloud Run, compartilhada por um app web em Angular e por clientes nativos para macOS, iOS e Android. O app macOS é feito com SwiftUI e MVVM, com erros tipados e sem dependências externas, e já tem todas as funcionalidades do painel web.",
+      "menuBarTimer": "Um timer Pomodoro minimalista que vive na barra de menus do macOS, sem ícone no Dock e sem janelas extras. O clique esquerdo inicia ou pausa a sessão, e o clique direito abre as configurações: duração dos intervalos, pausas, volume do som e início junto com o sistema.",
+      "tipsy": "Uma calculadora de gorjeta para iOS: informe a conta, escolha 0%, 10% ou 20% de gorjeta, defina quantas pessoas vão dividir e veja o valor por pessoa."
+    },
+    "screenshots": {
+      "tipsy": [
+        "Tela do Tipsy para informar a conta e escolher a gorjeta",
+        "Tela de resultado do Tipsy com o valor por pessoa"
+      ]
+    }
   },
   "experience": {
     "eyebrow": "Minha",
     "title": "Experiência",
-    "description": "Estou trabalhando no aplicativo VLC iOS, um player de vídeo para dispositivos iOS.",
+    "description": "Google Summer of Code 2025 com a VideoLAN. Projetei e construí uma função de Controle Parental para o app VLC iOS, protegendo ações sensíveis com senha ou Face ID. Foi também o meu primeiro projeto colaborativo de código aberto.",
     "evaluation": "Avaliação Final",
-    "viewCode": "Ver Código"
+    "viewCode": "Ver Código",
+    "logoAlt": "Logo do VLC"
   },
   "about": {
     "title": "Sobre Mim",
     "paragraphs": [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
-    ]
+      "Sou estudante de Engenharia de Software na Estácio, formado em Direito e Analista Judiciário no serviço público brasileiro. Estou em transição para a área de tecnologia e aprendo construindo projetos completos, um passo pequeno de cada vez.",
+      "Comecei com desenvolvimento iOS em Swift e hoje também construo back-ends com Java e Spring Boot. Em 2025 participei do Google Summer of Code com a VideoLAN, meu primeiro projeto de código aberto. Moro em São Paulo e busco a minha primeira oportunidade como desenvolvedor de software."
+    ],
+    "photoAlt": "Arthur Norat sorrindo ao ar livre"
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "text": "Estou em busca da minha primeira oportunidade em desenvolvimento de software e sempre gosto de conversar sobre projetos. O jeito mais rápido de falar comigo é pelo LinkedIn.",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "email": "E-mail",
+    "resume": "Currículo"
   },
   "footer": {
     "rights": "Todos os direitos reservados."
