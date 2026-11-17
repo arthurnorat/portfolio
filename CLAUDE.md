@@ -1,29 +1,40 @@
 # Portfolio
 
-Personal professional portfolio of Arthur Norat. A static site in plain HTML and CSS: no build step, no JavaScript, no dependencies installed locally. Published on GitHub Pages.
+Personal professional portfolio of Arthur Norat. A static site in three languages, generated with Eleventy (Node) and published on GitHub Pages. No client-side JavaScript.
+
+## Commands
+- `npm install`: install dependencies (once).
+- `npm start`: dev server with live reload at `http://localhost:8080` (Arthur runs it).
+- `npm run build`: generate the site into `_site/` (a compile check; safe for Claude to run).
 
 ## Architecture
-- Three language versions with the same structure: `/` (English), `/pt-br/` and `/es/`.
-- Each language has `index.html` (home) and `gsoc2025.html` (Google Summer of Code 2025 write-up).
-- A single `style.css` at the root is shared by all six pages; `assets/` holds the images.
-- The six pages are near-copies of each other. Until Step 02 decides how to remove this duplication, **every content or structure change must be replicated in all three languages**.
+- Source lives in `src/`; the generated site goes to `_site/` (git-ignored, never edited by hand).
+- **Structure is written once**, in `src/_includes/layouts/base.njk` (head, nav, footer) and `src/_includes/partials/lang-switcher.njk`. The two page types are `src/index.njk` (home) and `src/gsoc2025.njk` (Google Summer of Code 2025 write-up); each one is generated three times, once per entry of `src/_data/languages.json` (`/`, `/pt-br/`, `/es/`).
+- **Text lives in data files**, one per language: `src/_data/i18n/{en,pt-br,es}.json`. Language-neutral data: `site.json` (name, URLs, year) and `projects.json` (project names and images).
+- The GSoC article body is one HTML fragment per language: `src/_includes/gsoc/{en,pt-br,es}.html` (images use `{{ lang.root }}assets/...`).
+- Links are relative (`lang.root` is `./` for English and `../` for the others), so the site works under `github.io/portfolio/` and at a custom domain with no config change.
+- `style.css` and `assets/` stay at the repo root and are copied as they are (`eleventy.config.js`).
+- A change that affects every page goes in the layout; a text change goes in the three i18n files. Never edit `_site/`.
 - The visible site content is in EN / PT-BR / ES (that is the product). Code, comments, commit messages and docs are in English.
 
 ## Out of scope (ask before touching)
 - Images in `assets/`: do not edit, compress or rename without asking.
 - The photos `assets/arthur.JPG` and `assets/4e713b43-d59f-4b44-8cc5-8d373e287f49.jpg` stay until Step 06.
+- GitHub Pages settings (Settings → Pages): changed only by Arthur.
 
 ## Infrastructure
-- **Hosting**: GitHub Pages, `https://arthurnorat.github.io/portfolio/`.
-- No contact form and no third-party service: the broken Formspree form was removed in Step 01.
+- **Hosting**: GitHub Pages, `https://arthurnorat.github.io/portfolio/`. Pages **source is GitHub Actions** (not "Deploy from a branch").
+- **Deploy**: `.github/workflows/deploy.yml` builds with Node 22 (`npm ci`, `npm run build`) and publishes `_site/` on every push to `main`. It can also be run by hand from the Actions tab.
+- No contact form and no third-party service (the broken Formspree form was removed in Step 01).
+- A custom domain is planned for later: it will need a `CNAME` file copied into `_site/` and DNS records (outside Git). Not done yet.
 - No environment variables and no secrets.
 
 ## Status
 Roadmap (one step at a time, reviewed before the next):
-- 00 Foundation (done): CLAUDE.md, bilingual README, minimal `.gitignore`, remove dead assets.
-- **01 Remove the broken contact form** (current). The new contact section (email, LinkedIn, GitHub, resume PDF) comes later, with the content in Step 06.
-- 02 Decide the architecture against the 6-file duplication (plain HTML vs Jekyll vs Eleventy).
+- 00 Foundation (done).
+- 01 Remove the broken contact form (done).
+- **02 Eleventy architecture** (current): templates + one data file per language; GitHub Actions deploy; language switcher with text (`EN · PT · ES`) instead of flags.
 - 03 Semantic, valid HTML.
-- 04 CSS cleanup and responsive layout (mobile is broken).
+- 04 CSS cleanup (including the dead form CSS) and responsive layout (mobile is broken).
 - 05 Image and font optimization.
-- 06 Real content (Lorem ipsum is live), contact section + resume PDF (needs Arthur's public email choice and the PDF), and SEO / Open Graph.
+- 06 Real content (Lorem ipsum is live), contact section + resume PDF (needs Arthur's public email choice and the PDF), custom domain, and SEO / Open Graph.

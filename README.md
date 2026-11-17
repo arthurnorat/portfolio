@@ -8,32 +8,43 @@
 
 Personal professional portfolio, available in English, Brazilian Portuguese and Spanish. Live at https://arthurnorat.github.io/portfolio/
 
+Built with [Eleventy](https://www.11ty.dev/): the structure is written once in templates, and the text of each language lives in its own data file.
+
 ## Structure
 
 ```
 .
-├── index.html          # home (English)
-├── gsoc2025.html       # Google Summer of Code 2025 write-up (English)
-├── pt-br/              # same pages in Brazilian Portuguese
-├── es/                 # same pages in Spanish
-├── style.css           # single stylesheet shared by all pages
-├── assets/             # images
-└── docs/steps/         # study documents, one per step (in Portuguese)
+├── src/
+│   ├── _data/              # languages, site info and one text file per language (i18n/)
+│   ├── _includes/          # layout, language switcher and the GSoC article per language
+│   ├── index.njk           # home page template (generated in 3 languages)
+│   └── gsoc2025.njk        # GSoC 2025 write-up template (generated in 3 languages)
+├── style.css               # single stylesheet shared by all pages
+├── assets/                 # images
+├── eleventy.config.js      # Eleventy configuration
+├── .github/workflows/      # deploy to GitHub Pages
+└── docs/steps/             # study documents, one per step (in Portuguese)
 ```
+
+The generated site goes to `_site/` (not versioned) as `/`, `/pt-br/` and `/es/`.
 
 ## Run locally
 
-It is a static site, so no installation is needed. Open `index.html` in a browser, or serve the folder:
+Requires Node 18 or newer.
 
 ```bash
-python3 -m http.server 8000
+npm install
 ```
 
-Then open http://localhost:8000.
+```bash
+npm start
+```
+
+Then open http://localhost:8080. To only generate the site into `_site/`, run `npm run build`.
 
 ## Deploy
 
-The site is published with GitHub Pages straight from the repository. Pushing to the published branch updates the live site.
+On every push to `main`, a GitHub Actions workflow builds the site and publishes it with GitHub Pages. In the repository settings, Pages must use **GitHub Actions** as its source.
 
 ---
 
@@ -43,29 +54,40 @@ The site is published with GitHub Pages straight from the repository. Pushing to
 
 Portfólio profissional pessoal, disponível em inglês, português do Brasil e espanhol. No ar em https://arthurnorat.github.io/portfolio/
 
+Feito com [Eleventy](https://www.11ty.dev/): a estrutura é escrita uma vez em modelos, e o texto de cada idioma fica em um arquivo de dados próprio.
+
 ## Estrutura
 
 ```
 .
-├── index.html          # página inicial (inglês)
-├── gsoc2025.html       # texto sobre o Google Summer of Code 2025 (inglês)
-├── pt-br/              # as mesmas páginas em português do Brasil
-├── es/                 # as mesmas páginas em espanhol
-├── style.css           # única folha de estilo, usada por todas as páginas
-├── assets/             # imagens
-└── docs/steps/         # documentos de estudo, um por etapa (em português)
+├── src/
+│   ├── _data/              # idiomas, dados do site e um arquivo de texto por idioma (i18n/)
+│   ├── _includes/          # layout, seletor de idioma e o artigo do GSoC por idioma
+│   ├── index.njk           # modelo da página inicial (gerado em 3 idiomas)
+│   └── gsoc2025.njk        # modelo do texto sobre o GSoC 2025 (gerado em 3 idiomas)
+├── style.css               # única folha de estilo, usada por todas as páginas
+├── assets/                 # imagens
+├── eleventy.config.js      # configuração do Eleventy
+├── .github/workflows/      # deploy no GitHub Pages
+└── docs/steps/             # documentos de estudo, um por etapa (em português)
 ```
+
+O site gerado vai para `_site/` (não versionado) como `/`, `/pt-br/` e `/es/`.
 
 ## Rodar localmente
 
-É um site estático, então não precisa instalar nada. Abra o `index.html` no navegador, ou sirva a pasta:
+Requer Node 18 ou mais recente.
 
 ```bash
-python3 -m http.server 8000
+npm install
 ```
 
-Depois abra http://localhost:8000.
+```bash
+npm start
+```
+
+Depois abra http://localhost:8080. Para apenas gerar o site em `_site/`, rode `npm run build`.
 
 ## Deploy
 
-O site é publicado com o GitHub Pages direto do repositório. Fazer push na branch publicada atualiza o site no ar.
+A cada push na `main`, um workflow do GitHub Actions gera o site e o publica com o GitHub Pages. Nas configurações do repositório, o Pages precisa usar **GitHub Actions** como fonte.
