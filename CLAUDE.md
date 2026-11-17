@@ -33,8 +33,8 @@ Personal professional portfolio of Arthur Norat. A static site in three language
 Roadmap (one step at a time, reviewed before the next):
 - 00 Foundation (done).
 - 01 Remove the broken contact form (done).
-- **02 Eleventy architecture** (current): templates + one data file per language; GitHub Actions deploy; language switcher with text (`EN · PT · ES`) instead of flags.
-- 03 Semantic, valid HTML.
+- 02 Eleventy architecture (done): templates + one data file per language; GitHub Actions deploy; language switcher with text (`EN · PT · ES`) instead of flags.
+- 03 Semantic, valid HTML (next).
 - 04 CSS cleanup (including the dead form CSS) and responsive layout (mobile is broken).
 - 05 Image and font optimization.
 - 06 Real content (Lorem ipsum is live), contact section + resume PDF (needs Arthur's public email choice and the PDF), custom domain, and SEO / Open Graph.
