@@ -43,7 +43,7 @@ Roadmap: Steps 00–06 are done (see `docs/steps/`).
 - 03 Semantic HTML, 04 CSS cleanup and responsive layout, 05 Images and fonts, 06 Real content, contact and SEO.
 
 Pending inputs from Arthur (the site is complete without them):
-- Review the drafted texts in `src/_data/i18n/*.json` (hero, projects, About, contact) and the GSoC article status.
+- Review the drafted texts in `src/_data/i18n/*.json` (hero, projects, About, contact) and the GSoC article status. Positioning: "Apple and Backend Developer" (iOS and macOS); the site is for recruiters and interviewers, so it never says he is looking for a first opportunity.
 - Public email and resume PDF(s) in `site.json`.
 - Screenshots for Home Budget and MenuBarTimer (add to `projects.json` and `assets/`).
 - Custom domain (CNAME + DNS + `site.url`).

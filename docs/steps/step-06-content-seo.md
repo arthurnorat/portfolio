@@ -26,9 +26,9 @@ O README do `home-budget-api` lista a API e o app web em produção como "demo".
 
 **Isso merece atenção fora do portfólio:** o endereço da API está no README público do repositório, e a autenticação (Firebase Auth) está só "planejada". Vale priorizá-la, ou pelo menos remover os links de produção do README enquanto ela não existe.
 
-### 3. Posicionamento: "iOS and Backend Developer"
+### 3. Posicionamento: "Apple and Backend Developer"
 
-O site dizia "iOS and Web Developer", mas o seu perfil e os repositórios hoje são Swift (iOS e macOS) e Java com Spring Boot. O cargo no seu perfil do GitHub já diz "Backend Developer". Usei **iOS e Backend** e uma frase curta embaixo: "Crio apps iOS com Swift e back-ends com Java e Spring Boot." É um rascunho seu para aprovar.
+O site dizia "iOS and Web Developer", mas o seu perfil e os repositórios hoje são Swift (iOS e macOS) e Java com Spring Boot. O cargo no seu perfil do GitHub já diz "Backend Developer". Usei **Apple e Backend** (e não "iOS", porque você também desenvolve para macOS) e uma frase curta embaixo: "Crio apps para as plataformas Apple com Swift e back-ends com Java e Spring Boot." O portfólio é para recrutadores e entrevistadores, então os textos não falam em "procurar a primeira oportunidade".
 
 ### 4. Texto do "Sobre mim" a partir das suas próprias palavras
 
@@ -80,7 +80,7 @@ Detalhes importantes:
 
 Não consegui, por conta própria, e deixei preparado:
 
-1. **Revisar os textos.** São rascunhos nas três línguas. Em especial, confirme: "procurando minha primeira oportunidade" (da sua frase no GitHub; pode estar desatualizada), a data de formatura (não incluí), e se quer mencionar o Direito e o serviço público.
+1. **Revisar os textos.** São rascunhos nas três línguas. Em especial, confirme: o primeiro parágrafo do "Sobre mim", que ainda diz que você está "em transição para a tecnologia" (veio do README do seu perfil e pode soar como iniciante), a data de formatura (não incluí), e se quer mencionar o Direito e o serviço público.
 2. **E-mail público** (e se prefere um alias só para o portfólio).
 3. **PDF do currículo** (um ou por idioma).
 4. **Screenshots do Home Budget e do MenuBarTimer** (os cartões deles hoje não têm imagem). Basta adicionar a lista `images` em `projects.json` e os arquivos em `assets/`. Cuidado para não mostrar dados reais de gastos.
