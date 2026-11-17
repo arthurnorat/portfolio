@@ -17,6 +17,13 @@ Personal professional portfolio of Arthur Norat. A static site in three language
 - A change that affects every page goes in the layout; a text change goes in the three i18n files. Never edit `_site/`.
 - The visible site content is in EN / PT-BR / ES (that is the product). Code, comments, commit messages and docs are in English.
 
+## Working mode (authorized by Arthur on 2026-11-17)
+For the remaining roadmap (Steps 03–06) Claude delivers the site end to end and tests it itself, instead of stopping for review after each step. This overrides the default "one step, then stop" rule of the global instructions, with these limits:
+- **Git**: Claude may `git add` and `git commit` (small Conventional Commits, English). Claude never runs `git push` or any history-rewriting command; Arthur pushes after checking the result.
+- **Content**: Claude drafts texts from public sources (his GitHub, existing pages) and flags what it cannot confirm. Never invent facts about his work.
+- **Design**: the current minimalist look stays; a redesign is postponed until Arthur has references.
+- The step documents in `docs/steps/` (Portuguese), the README and this file are still kept up to date.
+
 ## Out of scope (ask before touching)
 - Images in `assets/`: do not edit, compress or rename without asking.
 - The photos `assets/arthur.JPG` and `assets/4e713b43-d59f-4b44-8cc5-8d373e287f49.jpg` stay until Step 06.
