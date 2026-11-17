@@ -56,9 +56,9 @@ Os padrões de segredos (`.env*`, `*.pem`, `*.key`, `*.p12`, `*.crt`) são uma p
 
 ### `CLAUDE.md`
 
-Documento curto lido no início de cada sessão de trabalho. Registra o que só este projeto pode dizer: a arquitetura (3 idiomas × 2 páginas + um CSS compartilhado), a regra de que toda mudança precisa ser repetida nos três idiomas enquanto a duplicação existir, o que não pode ser mexido sem perguntar, a infraestrutura (GitHub Pages e Formspree) e o status com o roteiro das etapas.
+Documento curto lido no início de cada sessão de trabalho. Registra o que só este projeto pode dizer: a arquitetura (3 idiomas × 2 páginas + um CSS compartilhado), a regra de que toda mudança precisa ser repetida nos três idiomas enquanto a duplicação existir, o que não pode ser mexido sem perguntar, a infraestrutura (GitHub Pages e, na época, o Formspree) e o status com o roteiro das etapas.
 
-Na seção de infraestrutura há um problema conhecido registrado de propósito: o ID do formulário no Formspree não existe, então as mensagens do formulário de contato se perdem. Isso é corrigido na Etapa 01. O ID de um formulário Formspree **não é segredo**, porque precisa estar no HTML da página para funcionar.
+Na seção de infraestrutura há um problema conhecido registrado de propósito: o ID do formulário no Formspree não existe, então as mensagens do formulário de contato se perdem. Isso foi resolvido na Etapa 01, que decidiu **remover** o formulário em vez de consertá-lo (veja `step-01-remove-contact-form.md`). Vale guardar a ideia: o ID de um formulário Formspree **não é segredo**, porque precisa estar no HTML da página para funcionar.
 
 ### `README.md`
 
@@ -85,4 +85,4 @@ git rm --cached assets/.DS_Store
 
 ## Conexão com a próxima etapa
 
-Com o repositório organizado e o roteiro registrado no `CLAUDE.md`, a **Etapa 01** corrige o problema mais urgente do site: o formulário de contato que descarta as mensagens. Ela depende de uma ação sua fora do Git: criar um formulário novo no painel do Formspree, para obter um ID válido. Essa configuração (que fica fora do repositório) será explicada naquela etapa, junto com a alternativa de usar um link `mailto:`.
+Com o repositório organizado e o roteiro registrado no `CLAUDE.md`, a **Etapa 01** resolve o problema mais urgente do site: o formulário de contato que descarta as mensagens. Na discussão entre as etapas, a decisão foi remover o formulário (em vez de consertá-lo com um novo ID no Formspree) e deixar a nova seção de contato para mais tarde.

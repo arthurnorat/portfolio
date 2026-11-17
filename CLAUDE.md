@@ -15,15 +15,15 @@ Personal professional portfolio of Arthur Norat. A static site in plain HTML and
 
 ## Infrastructure
 - **Hosting**: GitHub Pages, `https://arthurnorat.github.io/portfolio/`.
-- **Contact form**: Formspree (endpoint in `index.html`, action URL). The form ID is public by nature (it is in the HTML), so it is not a secret. **Known issue: the current ID does not exist**, so messages are lost (fixed in Step 01).
+- No contact form and no third-party service: the broken Formspree form was removed in Step 01.
 - No environment variables and no secrets.
 
 ## Status
 Roadmap (one step at a time, reviewed before the next):
-- **00 Foundation** (current): CLAUDE.md, bilingual README, minimal `.gitignore`, remove dead assets.
-- 01 Fix the contact form (needs a new Formspree form, created by Arthur in the dashboard).
+- 00 Foundation (done): CLAUDE.md, bilingual README, minimal `.gitignore`, remove dead assets.
+- **01 Remove the broken contact form** (current). The new contact section (email, LinkedIn, GitHub, resume PDF) comes later, with the content in Step 06.
 - 02 Decide the architecture against the 6-file duplication (plain HTML vs Jekyll vs Eleventy).
 - 03 Semantic, valid HTML.
 - 04 CSS cleanup and responsive layout (mobile is broken).
 - 05 Image and font optimization.
-- 06 Real content (Lorem ipsum is live) and SEO / Open Graph.
+- 06 Real content (Lorem ipsum is live), contact section + resume PDF (needs Arthur's public email choice and the PDF), and SEO / Open Graph.
