@@ -19,3 +19,7 @@
 # Logs and temporary files
 *.log
 tmp/
+
+# Node / Eleventy
+node_modules/
+_site/
